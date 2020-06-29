@@ -151,12 +151,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // window.addEventListener('scroll', showModalByScroll);
 
     class MenuItem {
-        constructor(imageSource, alt, title, description, price, parentSelector) {
+        constructor(imageSource, alt, title, description, price, parentSelector, ...classes) {
             this.imageSource = imageSource;
             this.alt = alt;
             this.title = title;
             this.description = description;
             this.price = price;
+            this.classes = classes;
             this.parent = document.querySelector(parentSelector);
             this.transfer = 27;
 
@@ -169,8 +170,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         render() {
             const div = document.createElement('div');
-            div.classList.add('menu__item');
-
+            
+            if (this.classes.length == 0) {
+                this.element = 'menu__item';
+                div.classList.add(this.element);
+            } else {
+                this.classes.forEach(className => div.classList.add(className));
+            }
             div.innerHTML = `
                 <img src="${this.imageSource}" alt="${this.alt}">
                 <h3 class="menu__item-subtitle">${this.title}</h3>
@@ -197,7 +203,9 @@ document.addEventListener('DOMContentLoaded', () => {
         'Меню "Фитнес"',
         'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
         9,
-        '.menu .container'
+        '.menu .container',
+        // 'menu__item',
+        // 'big'
     )).render();
 
     (new MenuItem(
@@ -206,7 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'Меню “Премиум”',
         'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
         13,
-        '.menu .container'
+        '.menu .container',
+        'menu__item'
     )).render();
 
     (new MenuItem(
@@ -215,6 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Меню "Постное"',
         'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.',
         10,
-        '.menu .container'
+        '.menu .container',
+        'menu__item'
     )).render();
 });
