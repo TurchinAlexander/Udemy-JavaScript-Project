@@ -11,5 +11,6 @@
     "devel": true,
     "jquery": true,
     "esversion": 8,
-    "node": true
+    "node": true,
+    "laxbreak": true
 }
