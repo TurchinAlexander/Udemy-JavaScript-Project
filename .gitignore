@@ -1,36 +1,3 @@
-
-Skip to content
-github / gitignore
-Code Pull requests 151 Projects 0 Actions Security 0 Pulse Community
-gitignore/Node.gitignore
-@ch4ot1c ch4ot1c Add .yarn/install-state.gz to Node.gitignore (#3407) 7293c14 on May 14
-@stuartpb
-@shiftkey
-@SimonSiefke
-@TennyZhuang
-@venatoria
-@ro31337
-@Richienb
-@melonmanchan
-@gouthamve
-@jucrouzet
-@cheddar
-@arcresu
-@xamgore
-@tkesgar
-@kesoji
-@tejashah88
-@sroberts
-@segayuu
-@ChiefORZ
-@MCSH
-@rgbkrk
-@rsolomo
-@peat
-@noinkling
-@ndelvalle
-@MikeRalphson
-116 lines (86 sloc) 1.77 KB
 # Logs
 logs
 *.log
@@ -147,18 +114,3 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-
-    © 2020 GitHub, Inc.
-    Terms
-    Privacy
-    Security
-    Status
-    Help
-
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
-
