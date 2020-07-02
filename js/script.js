@@ -340,54 +340,98 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Slider
 
-    const slider = document.querySelector('.offer__slider'),
-          sliderCurrent = slider.querySelector('#current'),
-          sliderTotal = slider.querySelector('#total'),
-          prevButton = slider.querySelector('.offer__slider-prev'),
-          nextButton = slider.querySelector('.offer__slider-next'),
-          sliderElements = slider.querySelectorAll('.offer__slide'),
-          totalSliderCount = sliderElements.length;
+    // const slider = document.querySelector('.offer__slider'),
+    //       sliderCurrent = slider.querySelector('#current'),
+    //       sliderTotal = slider.querySelector('#total'),
+    //       prevButton = slider.querySelector('.offer__slider-prev'),
+    //       nextButton = slider.querySelector('.offer__slider-next'),
+    //       sliderElements = slider.querySelectorAll('.offer__slide'),
+    //       totalSliderCount = sliderElements.length;
 
-    let currentSlider = 0;
+    // let currentSlider = 0;
 
-    function hideSliders(sliderArray) {
-        sliderArray.forEach((item) => {
-            item.classList.add('hide');
-        });
-    }
+    // function hideSliders(sliderArray) {
+    //     sliderArray.forEach((item) => {
+    //         item.classList.add('hide');
+    //     });
+    // }
 
-    function showSlider(slider) {
-        slider.classList.remove('hide');
-    }
+    // function showSlider(slider) {
+    //     slider.classList.remove('hide');
+    // }
 
-    function clickOnSlider(next) {
-        if (next) {
-            currentSlider = (currentSlider + 1) % totalSliderCount;
-        } else {
-            if (currentSlider-- === 0) {
-                currentSlider = totalSliderCount - 1;
-            }
-            // } else {
-            //     currentSlider--;
-            // }
+    // function clickOnSlider(next) {
+    //     if (next) {
+    //         currentSlider = (currentSlider + 1) % totalSliderCount;
+    //     } else {
+    //         if (currentSlider-- === 0) {
+    //             currentSlider = totalSliderCount - 1;
+    //         }
+    //         // } else {
+    //         //     currentSlider--;
+    //         // }
+    //     }
+
+    //     hideSliders(sliderElements);
+    //     showSlider(sliderElements[currentSlider]);
+    //     sliderCurrent.innerText = getZero(currentSlider + 1);
+    // }
+
+    // prevButton.addEventListener('click', () => {
+    //     clickOnSlider(false);
+    // });
+
+    // nextButton.addEventListener('click', () => {
+    //     clickOnSlider(true);
+    // });
+
+    // sliderTotal.innerText = getZero(totalSliderCount);
+    // sliderCurrent.innerText = getZero(currentSlider + 1);
+    // hideSliders(sliderElements);
+    // showSlider(sliderElements[currentSlider]);
+
+
+    const 
+        slides = document.querySelectorAll('.offer__slide'),
+        prev = document.querySelector('.offer__slider-prev'),
+        next = document.querySelector('.offer__slider-next'),
+        total = document.querySelector('#total'),
+        current = document.querySelector('#current');
+
+    let slideIndex = 1;
+
+    showSlides(slideIndex);
+
+    total.textContent = getZero(slides.length);
+
+    function showSlides(n) {
+        if (n > slides.length) {
+            slideIndex = 1;
+        } else if (n < 1) {
+            slideIndex = slides.length;
         }
 
-        hideSliders(sliderElements);
-        showSlider(sliderElements[currentSlider]);
-        sliderCurrent.innerText = getZero(currentSlider + 1);
+        slides.forEach((item) => {
+            item.style.display = 'none';
+        });
+
+        slides[slideIndex - 1].style.display = 'block';
+
+        current.textContent = getZero(slideIndex);
     }
 
-    prevButton.addEventListener('click', () => {
-        clickOnSlider(false);
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    prev.addEventListener('click', () => {
+        plusSlides(-1);
     });
 
-    nextButton.addEventListener('click', () => {
-        clickOnSlider(true);
+    next.addEventListener('click', () => {
+        plusSlides(1);
     });
 
-    sliderTotal.innerText = getZero(totalSliderCount);
-    sliderCurrent.innerText = getZero(currentSlider + 1);
-    hideSliders(sliderElements);
-    showSlider(sliderElements[currentSlider]);
+
 
 });
