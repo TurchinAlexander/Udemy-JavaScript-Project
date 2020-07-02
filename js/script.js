@@ -336,4 +336,58 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('http://localhost:3000/menu')
         .then(data => data.json())
         .then(res => console.log(res));
+
+
+    // Slider
+
+    const slider = document.querySelector('.offer__slider'),
+          sliderCurrent = slider.querySelector('#current'),
+          sliderTotal = slider.querySelector('#total'),
+          prevButton = slider.querySelector('.offer__slider-prev'),
+          nextButton = slider.querySelector('.offer__slider-next'),
+          sliderElements = slider.querySelectorAll('.offer__slide'),
+          totalSliderCount = sliderElements.length;
+
+    let currentSlider = 0;
+
+    function hideSliders(sliderArray) {
+        sliderArray.forEach((item) => {
+            item.classList.add('hide');
+        });
+    }
+
+    function showSlider(slider) {
+        slider.classList.remove('hide');
+    }
+
+    function clickOnSlider(next) {
+        if (next) {
+            currentSlider = (currentSlider + 1) % totalSliderCount;
+        } else {
+            if (currentSlider-- === 0) {
+                currentSlider = totalSliderCount - 1;
+            }
+            // } else {
+            //     currentSlider--;
+            // }
+        }
+
+        hideSliders(sliderElements);
+        showSlider(sliderElements[currentSlider]);
+        sliderCurrent.innerText = getZero(currentSlider + 1);
+    }
+
+    prevButton.addEventListener('click', () => {
+        clickOnSlider(false);
+    });
+
+    nextButton.addEventListener('click', () => {
+        clickOnSlider(true);
+    });
+
+    sliderTotal.innerText = getZero(totalSliderCount);
+    sliderCurrent.innerText = getZero(currentSlider + 1);
+    hideSliders(sliderElements);
+    showSlider(sliderElements[currentSlider]);
+
 });
