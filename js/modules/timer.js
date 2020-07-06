@@ -7,7 +7,7 @@ function getZero(num) {
     }
 }
 
-function timer(selector, deadline) {
+function timer(timerSelector, deadline) {
     function getTimeRemaining(endtime) {
         const t = Date.parse(endtime) - Date.parse(new Date()),
               days = Math.floor(t / (1000 * 60 * 60 * 24)),
@@ -49,7 +49,7 @@ function timer(selector, deadline) {
 
     }
 
-    setClock(selector, deadline);
+    setClock(timerSelector, deadline);
 }
 
 export default timer;
