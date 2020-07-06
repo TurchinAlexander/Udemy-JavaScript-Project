@@ -1,5 +1,3 @@
-"use strict"
-
 function tabs() {
     // Tabs
 
@@ -42,4 +40,4 @@ function tabs() {
     });
 }
 
-module.exports = tabs;
+export default tabs;

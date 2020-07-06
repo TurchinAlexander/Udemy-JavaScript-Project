@@ -113,4 +113,4 @@ function calculator() {
     globalDiv.addEventListener('input', checkClientInput);
 }
 
-module.exports = calculator;
+export default calculator;

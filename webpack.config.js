@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 let path = require('path');
 
@@ -7,7 +7,7 @@ module.exports = {
     entry: './js/script.js',
     output: {
         filename: 'bundle.js',
-        path: __dirname + '/dist/js'
+        path: __dirname + '/js'
     },
     watch: true,
 

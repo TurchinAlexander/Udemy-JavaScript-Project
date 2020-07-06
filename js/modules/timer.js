@@ -1,3 +1,12 @@
+function getZero(num) {
+    if (num >= 0
+        && num < 10) {
+            return `0${num}`;
+    } else {
+        return num;
+    }
+}
+
 function timer() {
     // Timer
 
@@ -17,15 +26,6 @@ function timer() {
             'minutes': minutes,
             'seconds': seconds
         };
-    }
-
-    function getZero(num) {
-        if (num >= 0
-            && num < 10) {
-                return `0${num}`;
-            } else {
-                return num;
-            }
     }
 
     function setClock(selector, endtime) {
@@ -56,4 +56,5 @@ function timer() {
     setClock('.timer', deadline);
 }
 
-module.exports = timer;
+export default timer;
+export {getZero};

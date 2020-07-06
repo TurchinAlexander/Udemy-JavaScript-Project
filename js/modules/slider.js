@@ -1,3 +1,5 @@
+import {getZero} from './timer';
+
 function slider() {
     // Slider
 
@@ -107,4 +109,4 @@ function slider() {
     });
 }
 
-module.exports = slider;
+export default slider;
