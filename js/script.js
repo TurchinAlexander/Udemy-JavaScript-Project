@@ -444,4 +444,91 @@ document.addEventListener('DOMContentLoaded', () => {
         const slideTo = event.target.getAttribute('data-slide-to');
         MoveSlideTo(+slideTo);
     });
+
+    // Calculator
+
+    const
+        result = document.querySelector('.calculating__result span'),
+        globalDiv = document.querySelector('.calculating__field');
+    
+    let
+        sex = 'female',
+        height,
+        weight,
+        age,
+        ratio = 1.375;
+
+    function CalculateTotal() {
+        if (!sex || !height || !weight || !age || !ratio) {
+            result.textContent = '____';
+            return;
+        }
+
+        if (sex == 'female') {
+            result.textContent = Math.round((447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age)) * ratio);
+        } else {
+            result.textContent = Math.round((88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age)) * ratio);
+        }
+    }
+
+    function getStaticInformation(parentSelector, activeClass) {
+        const elements = document.querySelectorAll(`${parentSelector} div`);
+
+        document.querySelector(parentSelector).addEventListener('click', (event) => {
+            if (!event.target.classList.contains('calculating__choose-item')) {
+                return;
+            }
+            
+            if (event.target.getAttribute('data-ratio')) {
+                ratio = +event.target.getAttribute('data-ratio');
+            } else {
+                sex = event.target.getAttribute('id');
+            }
+
+            elements.forEach((item) => {
+                item.classList.remove(activeClass);
+            });
+
+            event.target.classList.add(activeClass);
+
+            // CalculateTotal();
+        });
+
+    }
+
+    getStaticInformation('#gender', 'calculating__choose-item_active');
+    getStaticInformation('.calculating__choose_big', 'calculating__choose-item_active');
+
+    function getDynamicInformation(selector) {
+        const input = document.querySelector(selector);
+
+        input.addEventListener('input', (event) => {
+            switch(input.getAttribute('id')) {
+                case 'height':
+                    height = +input.value;
+                    break;
+                case 'weight':
+                    weight = +input.value;
+                    break;
+                case 'age':
+                    age = +input.value;
+                    break;
+            }
+
+            // CalculateTotal();
+        });
+    }
+
+    getDynamicInformation('#height');
+    getDynamicInformation('#weight');
+    getDynamicInformation('#age');
+
+    function checkClientInput(event) {
+        if (event.target.classList.contains('calculating__choose-item')) {
+            CalculateTotal();
+        }
+    }
+
+    globalDiv.addEventListener('click', checkClientInput);
+    globalDiv.addEventListener('input', checkClientInput);
 });
