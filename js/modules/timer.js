@@ -1,7 +1,6 @@
 function getZero(num) {
-    if (num >= 0
-        && num < 10) {
-            return `0${num}`;
+    if (num >= 0 && num < 10) {
+        return `0${num}`;
     } else {
         return num;
     }
@@ -25,12 +24,13 @@ function timer(timerSelector, deadline) {
     }
 
     function setClock(selector, endtime) {
-        const timer = document.querySelector(selector),
-              days = timer.querySelector('#days'),
-              hours = timer.querySelector('#hours'),
-              minutes = timer.querySelector('#minutes'),
-              seconds = timer.querySelector('#seconds'),
-              timeInterval = setInterval(updateClock, 1000);
+        const 
+            timer = document.querySelector(selector),
+            days = timer.querySelector('#days'),
+            hours = timer.querySelector('#hours'),
+            minutes = timer.querySelector('#minutes'),
+            seconds = timer.querySelector('#seconds'),
+            timeInterval = setInterval(updateClock, 1000);
 
         updateClock();
 
